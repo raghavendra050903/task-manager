@@ -1,6 +1,14 @@
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import User from "../models/auth/UserModel.js";
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://task-manager-nine-beige.vercel.app', // Specify your frontend URL here
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 export const protect = asyncHandler(async (req, res, next) => {
   try {
